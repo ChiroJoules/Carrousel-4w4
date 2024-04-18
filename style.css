@@ -1,5 +1,6 @@
 .carrousel {
-  display: none;
+  transform: scale(0);
+  transition: transform 0.25s;
   position: absolute;
   width: 50%;
   height: 50%;
@@ -17,8 +18,12 @@
   padding: 5px 3px;
 }
 
+.carrousel__figure {
+  position: absolute;
+}
+
 .carrousel--ouvrir {
-  display: block;
+  transform: scale(1);
 }
 
 .bouton__ouvrir {
