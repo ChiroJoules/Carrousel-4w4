@@ -35,7 +35,7 @@ function genere_html() {
             <form action="" class="carrousel__form"></form>
         </div>
         ';
-
+ 
     return $html;
 }
 
