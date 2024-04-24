@@ -1,29 +1,50 @@
-.carrousel{
-    transform: scale(0);
-    transition: transform 0.25s;
-    position: absolute;
-    width: 50%;
-    height: 50%;
+.carrousel{ //boîte modale qui cotiendra le carrousel
+    transform: scale(0); //la boîte modale est invisible
+    transition: transform 0.25s; // permet d'animer l'overture de la boîte modale
+    position: fixed; // la division carrousel est une boîte modale
+    width: 100%;
+    height: 100%;
     border: 2px solid red;
     background-color: rgba($color: #000000, $alpha: .05);
-    top: 50%;
-    left: 25%;
-    z-index: 1;
+    top: 0%;
+    left: 0%;
+    z-index: 2;
+
+    @media screen and (min-width : 400px) {
+        width: 75%;
+        height: 75%;
+        top: 12.5%;
+        left: 12.5%;
+    }
 }
 
 .carrousel__x{
     position: absolute;
-    right: 0;
-    top: 0;
-    padding: 5px 3px;
+    right: 10px;
+    top: 10px;
+    padding: 5px 8px;
+    border: 1px solid #555;
+    background-color: white;
+    z-index: 2;
 }
 
 .carrousel__figure{
-    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 .carrousel__img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
 
+.carrousel_radio{
+    width: 100%;
+    height: 100%;
 }
 
 .carrousel--ouvrir{

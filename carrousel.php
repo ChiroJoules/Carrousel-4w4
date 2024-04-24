@@ -39,5 +39,8 @@ function genere_html() {
     return $html;
 }
 
+//[carrousel] juste après la galérie dans votre article ou pgae
+//Quand la fonction the_content() recontrera [carrousel]
+
 add_shortcode( 'carrousel', 'genere_html' );
 
