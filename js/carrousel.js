@@ -71,10 +71,22 @@
 
     }
 
+    function resize_fenetre_carrousel(){
+
+        let carrousel__imgs = carrousel__figure.children;
+
+        for (const img of carrousel__imgs) {
+            img.style.width = window.innerWidth + 'px' / 2;
+            img.style.height = window.innerHeight + 'px' / 2;
+        }
+    }
+
  /** Event Listener pour ouvrir le carrousel  */
     bouton.addEventListener('mousedown', function(){
         carrousel.classList.add('carrousel--ouvrir')
     })
+
+    bouton.addEventListener('mousedown', resize_fenetre_carrousel);
 
  /** Event Listener pour fermer le carrousel  */
     carrousel__x.addEventListener('mousedown', function(){
