@@ -47,12 +47,7 @@
   background-color: hsl(167, 57%, 37%);
   border: 2px white solid;
   border-radius: 20px;
-}
-@media screen and (min-width: 430px) {
-  .carrousel__form {
-    width: 10rem;
-    height: 3rem;
-  }
+  padding: 0.5rem;
 }
 
 .carrousel__form > input[type=radio] {
