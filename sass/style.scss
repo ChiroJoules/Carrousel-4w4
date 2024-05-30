@@ -1,27 +1,18 @@
 .carrousel{ //boîte modale qui cotiendra le carrousel
     transform: scale(0); //la boîte modale est invisible
-    transition: transform 0.25s; // permet d'animer l'overture de la boîte modale
+    transition: transform 0.5s; // permet d'animer l'overture de la boîte modale
     position: fixed; // la division carrousel est une boîte modale
-    width: 100%;
-    height: 100%;
-    border: 2px solid red;
+    border: 2px solid white;
     background-color: rgba($color: #000000, $alpha: .05);
-    top: 0%;
-    left: 0%;
+    width: clamp(300px, 90%, 100%);
+    height: clamp(200px, 90%, 100%);
     z-index: 2;
-
-    @media screen and (min-width : 430px) {
-        width: 75%;
-        height: 75%;
-        top: 12.5%;
-        left: 12.5%;
-    }
 }
 
 .carrousel__x{
     position: absolute;
-    right: 10px;
-    top: 10px;
+    right: -15px;
+    top: -15px;
     padding: 5px 8px;
     border: 2px solid white;
     background-color: hsl(167, 57%, 37%);
@@ -31,8 +22,8 @@
 }
 
 .carrousel__figure{
-    width: 100%;
-    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .carrousel__img{
@@ -41,7 +32,8 @@
     height: 100%;
     top: 0;
     left: 0;
-    object-fit: cover;
+    //object-fit: cover;
+    object-fit: contain;
 }
 
 .carrousel__form{

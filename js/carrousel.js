@@ -4,7 +4,6 @@
     let bouton = document.querySelector('.bouton__ouvrir');
     let carrousel__x = document.querySelector('.carrousel__x')
     let galerie = document.querySelector('.galerie');
-
     let carrousel__figure = document.querySelector('.carrousel__figure');
 
     let galerie__img = galerie.querySelectorAll('img');
@@ -68,32 +67,63 @@
             }
             carrousel__imgs[index].style.opacity = 1;
         })
-
     }
 
     function resize_fenetre_carrousel(){
+        //recuperer les dimensions de l'image
+        let carrousel__img = carrousel__figure.querySelector('.carrousel__img');
+        let imageWidth = carrousel__img.naturalWidth;
+        let imageHeight = carrousel__img.naturalHeight;
 
-        let carrousel__imgs = carrousel__figure.children;
+        //recuperer les dimensions de la boite du carrousel
+        let boiteWidth = carrousel.offsetWidth;
+        let boiteHeight = carrousel.offsetHeight;
 
-        for (const img of carrousel__imgs) {
-            img.style.width = window.innerWidth + 'px' / 2;
-            img.style.height = window.innerHeight + 'px' / 2;
+        //recuperer les dimensions de la fenetre
+        let fenetrewidth = window.innerWidth;
+        let fenetreheight = window.innerHeight;
+
+        //calculer les nouvelles dimensions de l'image en respectant son ratio
+        let maxWidth = Math.min(imageWidth, fenetrewidth * 0.8);
+        let newHeight = Math.round((maxWidth / imageWidth) * imageHeight);
+
+        //si la nouvelle hauteur est plus grande que le 80% de l'hauteur de la fenetre
+        if (newHeight > fenetreheight * 0.8) {
+
+            //On reduit son hauteur pour qu'elle soit inferieur par rapport au 80% de l'hauteur de la fenetre
+            Math.round(newHeight = fenetreheight * 0.8); 
+
+            //On recalcule la largeur avec la nouvelle hauteur
+            maxWidth = Math.round((newHeight / imageHeight) * imageWidth);
         }
-    }
 
- /** Event Listener pour ouvrir le carrousel  */
+        //On applique les nouvelles dimensions à la boite du carrousel
+        carrousel.style.width = `${maxWidth}px`;
+        carrousel.style.height = `${newHeight}px`;
+
+        //On centre la boite du carrousel par rapport à la fenetre
+        carrousel.style.top = `calc(50% - ${newHeight / 2}px)`;
+        carrousel.style.left = `calc(50% - ${maxWidth / 2}px)`;
+
+        //Console log pour voir les nouvelles dimensions chaque fois qu'on resize la fenetre
+        console.log(`Nouvelle largeur: ${maxWidth}px`);
+        console.log(`Nouvelle hauteur: ${newHeight}px`);
+    }
+    
+    /** Event Listener pour ouvrir le carrousel  */
     bouton.addEventListener('mousedown', function(){
         carrousel.classList.add('carrousel--ouvrir')
     })
 
-    bouton.addEventListener('mousedown', resize_fenetre_carrousel);
+    //Event Listener pour redimensionner le carrousel avec la fenetre
+    window.addEventListener('resize', resize_fenetre_carrousel);
+
+    // Event Listener pour redimensionner le carrousel avec le bouton
+    bouton.addEventListener('mousedown', resize_fenetre_carrousel)
 
  /** Event Listener pour fermer le carrousel  */
     carrousel__x.addEventListener('mousedown', function(){
         carrousel.classList.remove('carrousel--ouvrir')
     })
-
-    /* Pour creer un collection d'images de la galérie */
-
 
 })()
